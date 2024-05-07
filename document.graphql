@@ -1,0 +1,20 @@
+query OrdersByAccountID(
+  $accountID: ID!
+) {
+  ordersByAccountID(
+    accountID: $accountID
+  ) {
+    items {
+      id
+      Account {
+        id
+        Orders {
+          items {
+            id
+           
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,68 @@
+type Account @aws_iam
+@aws_cognito_user_pools
+@aws_lambda {
+	id: ID
+	Orders(
+		limit: Int,
+	): ModelOrderConnection
+}
+
+enum ModelAttributeTypes {
+	binary
+	binarySet
+	bool
+	list
+	map
+	number
+	numberSet
+	string
+	stringSet
+	_null
+}
+
+input ModelIDInput {
+	ne: ID
+	eq: ID
+	le: ID
+	lt: ID
+	ge: ID
+	gt: ID
+	contains: ID
+	notContains: ID
+	between: [ID]
+	beginsWith: ID
+	attributeExists: Boolean
+	attributeType: ModelAttributeTypes
+	size: ModelSizeInput
+}
+
+
+type ModelOrderConnection @aws_iam
+@aws_cognito_user_pools
+@aws_lambda {
+	items: [Order]!
+}
+
+
+input ModelSizeInput {
+	ne: Int
+	eq: Int
+	le: Int
+	lt: Int
+	ge: Int
+	gt: Int
+	between: [Int]
+}
+
+
+type Order {
+	id: ID!
+	accountID: ID!
+	Account: Account
+}
+
+type Query {
+	ordersByAccountID(
+		accountID: ID!,
+	): ModelOrderConnection
+	}
