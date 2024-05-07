@@ -122,5 +122,6 @@ const injectedRtkApi = api.injectEndpoints({
 });
 
 export { injectedRtkApi as api };
-export const { useOrdersByAccountIdQuery, useLazyOrdersByAccountIdQuery } = injectedRtkApi;
+// Note: I changed the `d` to a `D` on `useLazyOrdersByAccountIDQuery` to demonstrate the difference
+export const { useOrdersByAccountIdQuery, useLazyOrdersByAccountIDQuery } = injectedRtkApi;
 
